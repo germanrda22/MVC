@@ -1,102 +1,124 @@
 <?php
-    namespace Models;
+namespace Models;
+use Config\BaseDatos;
 
-    class Contacto
-    {
-        private string $id;
-        private string $nombre;
-        private string $apellidos;
-        private string $correo;
-        private string $direccion;
-        private string $telefono;
-        private ?string $fechaNacimiento;
+class Contacto{
 
-        public function getId(): int
-        {
-                return $this->id;
-        }
+    private BaseDatos $conexion;
+    private string $id;
+    private string $nombre;
+    private string $apellidos;
+    private string $correo;
+    private string $direccion;
+    private string $telefono;
+    private ?string $fecha_nacimiento;
 
-        public function setId(int $id)
-        {
-                $this->id = $id;
-
-                return $this;
-        }
-
-        public function getNombre(): string
-        {
-                return $this->nombre;
-        }
-
-        public function setNombre(string $nombre)
-        {
-                $this->nombre = $nombre;
-
-                return $this;
-        }
-
-        public function getApellidos(): string
-        {
-                return $this->apellidos;
-        }
-
-        public function setApellidos(string $apellidos)
-        {
-                $this->apellidos = $apellidos;
-
-                return $this;
-        }
-
-        public function getCorreo(): string
-        {
-                return $this->correo;
-        }
-
-        public function setCorreo(string $correo)
-        {
-                $this->correo = $correo;
-
-                return $this;
-        }
-
-        public function getDireccion(): string
-        {
-                return $this->direccion;
-        }
-
-        public function setDireccion(string $direccion)
-        {
-                $this->direccion = $direccion;
-
-                return $this;
-        }
-
-        public function getTelefono(): string
-        {
-                return $this->telefono;
-        }
-
-        public function setTelefono(string $telefono)
-        {
-                $this->telefono = $telefono;
-
-                return $this;
-        }
-
-        public function getFechaNacimiento(): string
-        {
-                return $this->fechaNacimiento;
-        }
-
-        public function setFechaNacimiento(?string $fechaNacimiento)
-        {
-                $this->fechaNacimiento = $fechaNacimiento;
-
-                return $this;
-        }
-
-        public function conseguirTodos(): string
-        {
-            return "Aqui mostraremos todos los contactos de nuestra agenda";
-        }
+    public function __construct(){
+        $this->conexion = new BaseDatos;
     }
+    
+    public function getAll(): ?array{
+        $this->conexion->consulta("SELECT * FROM contactos");
+        return $this->conexion->extraerTodos();
+    }
+
+    public function extraer_registro():?array{
+        return ($contact = $this->conexion->extraerRegistro())?$contact:null;
+    }
+    
+    public function getConexion()
+    {
+        return $this->conexion;
+    }
+ 
+    public function setConexion($conexion)
+    {
+        $this->conexion = $conexion;
+
+        return $this;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+ 
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+ 
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+
+    public function setCorreo($correo)
+    {
+        $this->correo = $correo;
+
+        return $this;
+    }
+
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    public function getFecha_nacimiento()
+    {
+        return $this->fecha_nacimiento;
+    }
+
+    public function setFecha_nacimiento($fecha_nacimiento)
+    {
+        $this->fecha_nacimiento = $fecha_nacimiento;
+
+        return $this;
+    }
+}

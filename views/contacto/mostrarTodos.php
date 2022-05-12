@@ -1,2 +1,9 @@
-<h2>MIS CONTACTOS</h2>
-<?php echo $todos_mis_contactos?>
+<?php
+
+    foreach ($todos_mis_contactos as $fila)
+    {
+            foreach ($fila as $campo => $valor) 
+            {
+                echo "$campo: $valor <br><br>";
+            }
+    }

@@ -33,4 +33,19 @@
                 exit;
             }
         }
+
+        public function consulta(string $consultaSQL): void
+        {
+            $this->resultado = $this->conexion->query($consultaSQL);
+        }
+
+        public function extraerRegistro(): mixed
+        {
+            return ($fila = $this->resultado->fetch(PDO::FETCH_ASSOC))? $fila:false;
+        }
+
+        public function extraerTodos(): array
+        {
+            return $this->resultado->fetchAll(PDO::FETCH_ASSOC);
+        }
     }

@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda</title>
+    <title>Document</title>
 </head>
+<body>
     <h1>Agenda</h1>
-    <?php
+    <?php 
 
-        require_once 'autoload.php';
-        require_once 'config/dbconfig.php';
-        use Config\BaseDatos;
-        $db = new BaseDatos();
+    require_once "autoload.php";
+    require_once "./config/config.php";
+    require_once "./config/db.php";
+    require_once "./config/parameters.php";
+    require_once "./controllers/FrontController.php";
+    
+    use Controllers\FrontController;
+    FrontController::main();
+    
+
     ?>
-    <h2>He conectado con la base de datos</h2>
+    <hr>
+</body>
+</html>

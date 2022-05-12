@@ -7,7 +7,7 @@
         public function mostrarTodos()
         {
             $contacto = new Contacto();
-            $todos_mis_contactos = $contacto->conseguirTodos();
+            $todos_mis_contactos = $contacto->getAll();
             require_once 'views/contacto/mostrarTodos.php';
         }
     }
