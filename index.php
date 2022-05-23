@@ -19,7 +19,8 @@
     use Controllers\FrontController;
     FrontController::main();
     
-
+    echo "<a href='http://localhost/MVC/?controller=Contacto&action=mostrarTodos'>Mostrar Todos</a><br>";
+    echo "<a href='http://localhost/MVC/views/contacto/crear.php'>Crear contacto</a><br>";
     ?>
     <hr>
 </body>

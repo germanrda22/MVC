@@ -16,6 +16,11 @@ class Contacto{
     public function __construct(){
         $this->conexion = new BaseDatos;
     }
+
+    public function save()
+    {
+        
+    }
     
     public function getAll(): ?array{
         $this->conexion->consulta("SELECT * FROM contactos");
