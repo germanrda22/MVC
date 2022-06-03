@@ -10,5 +10,6 @@
     <label for="telefono">Teléfono:</label>
     <input type="text" name="telefono" required> <br>
     <label for="fecha_nac">Fecha de nacimiento:</label>
-    <input type="date" name="fecha_nac" required> <br>
+    <input type="date" name="fecha_nac"> <br>
+    <input type="submit" value="Enviar">
 </form>

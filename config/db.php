@@ -34,7 +34,7 @@
             }
         }
 
-        public function consulta(string $consultaSQL): void
+        public function consulta(string $consultaSQL): mixed
         {
             $this->resultado = $this->conexion->query($consultaSQL);
         }

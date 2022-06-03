@@ -30,11 +30,11 @@
                     $contacto->setCorreo($email);
                     $contacto->setDireccion($direccion);
                     $contacto->setTelefono($telefono);
-                    if($fecha_nac)
+                    if(isset($fecha_nac))
                     {
                         $contacto->setFecha_nacimiento($fecha_nac);
                     }
-                    $save = $contacto->save();
+                    $contacto->save();
                 }
             }
         }

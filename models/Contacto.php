@@ -1,6 +1,7 @@
 <?php
 namespace Models;
 use Config\BaseDatos;
+use PDO;
 
 class Contacto{
 
@@ -14,13 +15,33 @@ class Contacto{
     private ?string $fecha_nacimiento;
 
     public function __construct(){
-        $this->conexion = new BaseDatos;
+        $this->conexion = new BaseDatos();
     }
 
     public function save()
-    {
-        
-    }
+	{
+		$sql = "INSERT INTO contactos VALUES(NULL,:nombre, :apellidos, :email, :direccion, :telefono, :fecha)";
+		$ins = $this->conexion->consulta($sql);
+		$nombre = $this->getNombre();
+		$apellidos = $this->getApellidos();
+		$correo = $this->getCorreo();
+        $direccion = $this->getDireccion();
+        $telefono = $this->getTelefono();
+        $fecha_nacimiento = $this->getFecha_nacimiento();
+        $ins->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+		$ins->bindParam(':apellidos',$apellidos, PDO::PARAM_STR);
+		$ins->bindParam(':email',$correo, PDO::PARAM_STR);
+        $ins->bindParam(':direccion',$direccion, PDO::PARAM_STR);
+        $ins->bindParam(':telefono',$telefono, PDO::PARAM_STR);
+        $ins->bindParam(':fecha',$fecha_nacimiento, PDO::PARAM_STR);
+		$ins->execute();
+		$result = false;
+		if($ins){
+			$result = true;
+		}
+		$db = null;
+		return $result;
+	}
     
     public function getAll(): ?array{
         $this->conexion->consulta("SELECT * FROM contactos");
